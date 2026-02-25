@@ -7,7 +7,7 @@
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* =====================
    ROOT COLORS
@@ -272,10 +272,23 @@ footer a:hover {
     background: #1da851;
     transform: scale(1.05);
 }
-.floating-instagram:hover {
-    background: #1da851;
-    transform: scale(1.05);
-}   
+.floating-instagram {
+  width: 55px;
+  height: 55px;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  text-decoration: none;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+} 
 
 /* =====================
    ANIMATIONS
@@ -389,3 +402,4 @@ document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
 </body>
 
 </html>
+
