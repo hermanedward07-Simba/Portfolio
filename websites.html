@@ -251,6 +251,10 @@ section {
 /* =====================
    VIEW MORE BUTTON
 ===================== */
+.view-more {
+    text-align: center;
+}
+
 .view-more-btn {
     display: inline-block;
     padding: 14px 36px;
@@ -276,11 +280,13 @@ section {
 ===================== */
 .lightbox {
     position: fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: rgba(0,0,0,0.95);
     backdrop-filter: blur(4px);
     z-index: 2000;
@@ -368,7 +374,7 @@ footer a:hover {
 /* =====================
    RESPONSIVE
 ===================== */
-@media(max-width:768px){
+@media(max-width:768px) {
     .hero {
         flex-direction: column;
         text-align: center;
@@ -408,26 +414,31 @@ footer a:hover {
         <p class="subtitle" style="text-align: center;">A collection of websites and system applications I have developed:</p>
 
         <div class="web-grid">
-                   <a href="https://hermanedward07-simba.github.io/Leocadia/" target="_blank" class="web-card">
-             <img src="web1.jpg" alt="Portfolio Website">
-           <h3>Portfolio</h3>
-           </a>
-          <a href="https://hermanedward07-simba.github.io/restaurant/" target="_blank" class="web-card">
-             <img src="web2.jpg" alt="Fast food Website">
-           <h3>Restaurant & Fast Food</h3>
-           </a>
-           <a href="https://hermanedward07-simba.github.io/Volleyball/" target="_blank" class="web-card">
-             <img src="volleyball.jpg" alt="volleyball Website">
-           <h3>Volleyball Website</h3>
-           </a>
-           <a href="https://ushirika-sme-portal.vercel.app/" target="_blank" class="web-card">
+            <a href="https://hermanedward07-simba.github.io/Leocadia/" target="_blank" class="web-card">
+                <img src="web1.jpg" alt="Portfolio Website">
+                <h3>Portfolio</h3>
+            </a>
+            
+            <a href="https://hermanedward07-simba.github.io/restaurant/" target="_blank" class="web-card">
+                <img src="web2.jpg" alt="Fast food Website">
+                <h3>Restaurant & Fast Food</h3>
+            </a>
+            
+            <a href="https://hermanedward07-simba.github.io/Volleyball/" target="_blank" class="web-card">
+                <img src="volleyball.jpg" alt="volleyball Website">
+                <h3>Volleyball Website</h3>
+            </a>
+            
+            <a href="https://ushirika-sme-portal.vercel.app/" target="_blank" class="web-card">
                 <img src="system1.jpg" alt="Ushirika Portal System">
                 <h3>USHIRIKA PORTAL System</h3>
-            </div>
+            </a>
+
             <div class="web-card" data-title="Booking System" data-desc="Online booking system with calendar and notifications.">
                 <img src="system 2.jpg" alt="Booking System">
                 <h3>Booking System</h3>
             </div>
+
             <div class="web-card" data-title="Analytics Dashboard" data-desc="Dashboard displaying analytics and reports.">
                 <img src="system 3.jpg" alt="Analytics Dashboard">
                 <h3>Analytics Dashboard</h3>
@@ -458,8 +469,8 @@ footer a:hover {
 </footer>
 
 <!-- JS -->
-<script >
-    // Scroll reveal for web cards
+<script>
+// Scroll reveal for web cards
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if(entry.isIntersecting){
@@ -488,29 +499,30 @@ let currentIndex = 0;
 function openLightbox(index){
     const card = cards[index];
     lightboxImg.src = card.querySelector("img").src;
-    lightboxTitle.textContent = card.dataset.title;
-    lightboxDesc.textContent = card.dataset.desc;
+    lightboxTitle.textContent = card.dataset.title || "";
+    lightboxDesc.textContent = card.dataset.desc || "";
     lightbox.classList.remove("hidden");
     currentIndex = index;
 }
 
-cards.forEach((card,index)=>{
-    card.addEventListener("click",()=>openLightbox(index));
+cards.forEach((card, index) => {
+    card.addEventListener("click", () => openLightbox(index));
 });
 
-closeBtn.addEventListener("click",()=>lightbox.classList.add("hidden"));
-lightbox.addEventListener("click",(e)=>{
+closeBtn.addEventListener("click", () => lightbox.classList.add("hidden"));
+lightbox.addEventListener("click", (e) => {
     if(e.target === lightbox) lightbox.classList.add("hidden");
 });
 
-prevBtn.addEventListener("click",(e)=>{
+prevBtn.addEventListener("click", (e) => {
     e.stopPropagation();
-    currentIndex = (currentIndex-1+cards.length)%cards.length;
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
     openLightbox(currentIndex);
 });
-nextBtn.addEventListener("click",(e)=>{
+
+nextBtn.addEventListener("click", (e) => {
     e.stopPropagation();
-    currentIndex = (currentIndex+1)%cards.length;
+    currentIndex = (currentIndex + 1) % cards.length;
     openLightbox(currentIndex);
 });
 </script>
